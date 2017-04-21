@@ -1,0 +1,143 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/adaltas/node-pad"
+
+    >pad (v1.1.0)</a>
+</h1>
+<h4>Left and right string padding</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pad">module pad</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pad.pad">
+            function <span class="apidocSignatureSpan"></span>pad
+            <span class="apidocSignatureSpan">(text, length, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pad" id="apidoc.module.pad">module pad</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pad.pad" id="apidoc.element.pad.pad">
+        function <span class="apidocSignatureSpan"></span>pad
+        <span class="apidocSignatureSpan">(text, length, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pad = function (text, length, options) {
+  var escapecolor, invert, pad, padlength, ref;
+  if (options == null) {
+    options = {};
+  }
+  invert = typeof text === &#x27;number&#x27;;
+  if (invert) {
+    ref = [text, length], length = ref[0], text = ref[1];
+  }
+  if (typeof options === &#x27;string&#x27;) {
+    options = {
+      char: options
+    };
+  }
+  if (options.char == null) {
+    options.char = &#x27; &#x27;;
+  }
+  if (options.strip == null) {
+    options.strip = false;
+  }
+  text = text.toString();
+  pad = &#x27;&#x27;;
+  if (options.colors) {
+    escapecolor = /\x1B\[(?:[0-9]{1,2}(?:;[0-9]{1,2})?)?[m|K]/g;
+    length += text.length - text.replace(escapecolor, &#x27;&#x27;).length;
+  }
+  padlength = length - text.length;
+  if (padlength &#x3c; 0) {
+    if (options.strip) {
+      if (invert) {
+        return text.substr(length * -1);
+      } else {
+        return text.substr(0, length);
+      }
+    }
+    return text;
+  }
+  pad += options.char.repeat(padlength);
+  if (invert) {
+    return pad + text;
+  } else {
+    return text + pad;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
